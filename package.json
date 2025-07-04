@@ -1,0 +1,11 @@
+{
+  "name": "transfer-checker",
+  "version": "1.0.0",
+  "description": "Football transfer rumor checker",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

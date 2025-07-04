@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #EEE6D5 0%, #EBE2D1 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.subtitle {
+    font-size: 1.5 rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #183725;
+}
+
+.main-content {
+    text-align: center;
+}
+
+/* Top right logo styles */
+.top-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .top-logo {
+        top: 15px;
+        left: 15px;
+        padding: 8px;
+    }
+    
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .top-logo {
+        top: 10px;
+        left: 10px;
+        padding: 6px;
+    }
+    
+    .logo-image {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.title {
+    font-family: "Jersey 15", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: #183725;
+}
+
+.input-section {
+    margin-bottom: 2rem;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    background: #EEE6D5;
+    border-radius: 12px;
+    padding: 8px;
+    backdrop-filter: blur(10px);
+    border: 1px solid #183725;
+}
+
+.tweet-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 16px 20px;
+    font-size: 1rem;
+    color: #2f2f2f;
+    outline: none;
+    font-family: inherit;
+}
+
+.tweet-input::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.analyze-btn {
+    background: #183725;
+    border: none;
+    padding: 16px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    position: relative;
+}
+
+.analyze-btn:hover:not(:disabled) {
+    background: #143120;
+    transform: translateY(-2px);
+}
+
+.analyze-btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+.btn-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: spin 1s ease-in-out infinite;
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.error-message {
+    color: #ff6b6b;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.results-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.tweet-display {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+    max-width: 600px;
+}
+
+.tweet-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.author-name {
+    font-weight: 600;
+    color: #143120;
+}
+
+.tweet-content {
+    text-align: left;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.reliability-section {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.reliability-score-container {
+    text-align: center;
+}
+
+.reliability-label {
+    font-family: "Jersey 15", sans-serif;
+    font-size: 1.6rem;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 1rem;
+}
+
+.score-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #4CAF50 0deg, #4CAF50 var(--score-angle, 0deg), rgba(255, 255, 255, 0.1) var(--score-angle, 0deg));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+
+.score-circle::before {
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #EEE6D5;
+}
+
+.score-number {
+    font-family: "Jersey 15", sans-serif;
+    font-size: 3.8rem;
+    font-weight: 400;
+    color: #2f2f2f;
+    position: relative;
+    z-index: 1;
+}
+
+.verdict-container {
+    flex: 1;
+    text-align: left;
+    min-width: 250px;
+}
+
+.verdict-label {
+    font-family: "Jersey 15", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: #183725;
+}
+
+.reasoning-text {
+    border-top: 1px solid #183725;
+    padding-top: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: #2f2f2f;
+}
+
+.analyze-another-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.analyze-another-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .input-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .reliability-section {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .verdict-container {
+        text-align: center;
+    }
+    
+    .score-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .score-circle::before {
+        width: 75px;
+        height: 75px;
+    }
+    
+    .score-number {
+        font-size: 2rem;
+    }
+}
+
+/* Loading States */
+.loading .btn-text {
+    display: none;
+}
+
+.loading .spinner {
+    display: block;
+}
+
+/* Score Color Variations */
+.score-excellent { --score-color: #4CAF50; }
+.score-good { --score-color: #8BC34A; }
+.score-average { --score-color: #FFC107; }
+.score-poor { --score-color: #FF9800; }
+.score-terrible { --score-color: #F44336; }
